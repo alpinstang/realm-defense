@@ -5,37 +5,103 @@ using UnityEngine;
 
 public class Pathfinder : MonoBehaviour
 {
-    [SerializeField] Waypoint startPoint;
-    [SerializeField] Waypoint endPoint;
-    Dictionary<Vector2Int, Waypoint> grid = new Dictionary<Vector2Int, Waypoint>();
+    [SerializeField] Waypoint startWaypoint, endWaypoint;
 
-    // Start is called before the first frame update
+    Dictionary<Vector2Int, Waypoint> grid = new Dictionary<Vector2Int, Waypoint>();
+    Queue<Waypoint> queue = new Queue<Waypoint>();
+
+    Vector2Int[] directions = {
+        Vector2Int.up,
+        Vector2Int.right,
+        Vector2Int.down,
+        Vector2Int.left
+    };
+    private bool isRunning = true;
+    Waypoint searchCenter;
+
+    // Use this for initialization
     void Start()
     {
         LoadBlocks();
         ColorStartAndEnd();
+        Pathfind();
+    }
+
+    private void Pathfind()
+    {
+        queue.Enqueue(startWaypoint);
+        while(queue.Count > 0)
+        {
+            searchCenter = queue.Dequeue();
+            searchCenter.isExplored = true;
+            HaltIfEndFound();
+            ExploreNeighbours(searchCenter);
+        }
+    }
+
+    private void HaltIfEndFound()
+    {
+        if (searchCenter == endWaypoint)
+        {
+            isRunning = false;
+        }
+    }
+
+    private void ExploreNeighbours(Waypoint from)
+    {
+        if(!isRunning) { return; }
+        foreach (Vector2Int direction in directions)
+        {
+
+            Vector2Int neighborCoordinates = from.GetGridPos() + direction;
+            try
+            {
+                QueueNewNeighbors(neighborCoordinates);
+            }
+            catch
+            {
+                // do nothing
+            }
+        }
+    }
+
+    private void QueueNewNeighbors(Vector2Int neighborCoordinates)
+    {
+        Waypoint neighbor = grid[neighborCoordinates];
+        if(neighbor.isExplored || queue.Contains(neighbor))
+        {
+            // do nothing
+        } else
+        {
+            queue.Enqueue(neighbor);
+            neighbor.exploredFrom = searchCenter;
+
+        }
+
     }
 
     private void ColorStartAndEnd()
     {
-        startPoint.SetTopColor(Color.green);
-        endPoint.SetTopColor(Color.red);
+        startWaypoint.SetTopColor(Color.green);
+        endWaypoint.SetTopColor(Color.red);
     }
 
     private void LoadBlocks()
     {
         var waypoints = FindObjectsOfType<Waypoint>();
-        foreach(Waypoint waypoint in waypoints)
+        foreach (Waypoint waypoint in waypoints)
         {
             var gridPos = waypoint.GetGridPos();
-            if(grid.ContainsKey(gridPos))
+            if (grid.ContainsKey(gridPos))
             {
-                Debug.LogWarning("Overlapping block at " + waypoint);
-            } else
+                Debug.LogWarning("Skipping overlapping block " + waypoint);
+            }
+            else
             {
                 grid.Add(gridPos, waypoint);
             }
-            waypoint.SetTopColor(Color.black);
         }
+
+
     }
 }
