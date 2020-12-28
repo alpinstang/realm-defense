@@ -8,23 +8,23 @@
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class EditorSnap : MonoBehaviour
+[SelectionBase]
+public class CubeEditor : MonoBehaviour
 {
     [SerializeField]
     [Range(2f, 20f)] float gridSize = 10f;
 
-    void Awake()
-    {
-        Debug.Log("Editor causes this Awake");
-    }
+    TextMesh textMesh;
 
     void Update()
     {
         Vector3 snapPos;
+
         snapPos.x = Mathf.Round(transform.position.x / gridSize) * gridSize;
-
         snapPos.z = Mathf.Round(transform.position.z / gridSize) * gridSize;
-
         transform.position = new Vector3(snapPos.x, 0f, snapPos.z);
+
+        textMesh = GetComponentInChildren<TextMesh>();
+        textMesh.text = snapPos.x / gridSize + "," + snapPos.z / gridSize;
     }
 }
