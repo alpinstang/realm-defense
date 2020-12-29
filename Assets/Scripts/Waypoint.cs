@@ -59,12 +59,14 @@ public class Waypoint : MonoBehaviour
 
     private void RemoveTower()
     {
-        
+        // TODO: Remove tower system
     }
 
     private void PlaceTower()
     {
-        Instantiate(towerPrefab, transform.position, Quaternion.identity);
+        var tower = Instantiate(towerPrefab, transform.position, Quaternion.identity);
+        var towerList = GameObject.FindGameObjectWithTag("Tower List");
+        tower.transform.SetParent(towerList.transform);
         hasTower = true;
     }
 }

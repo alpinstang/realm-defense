@@ -8,6 +8,8 @@ TagManager:
   - Friendly Block
   - Enemy Block
   - Tower
+  - Tower List
+  - Enemy List
   layers:
   - Default
   - TransparentFX
