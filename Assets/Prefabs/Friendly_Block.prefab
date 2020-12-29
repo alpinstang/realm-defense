@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 19738312}
   m_Layer: 0
   m_Name: Friendly_Block
-  m_TagString: Untagged
+  m_TagString: Friendly Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,6 +154,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isExplored: 0
   exploredFrom: {fileID: 0}
+  isPlaceable: 1
+  hasTower: 0
+  towerPrefab: {fileID: 1899978627, guid: 1afb965ffee60794299fb7e631dafdaf, type: 3}
 --- !u!65 &19738312
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,9 @@ public class Waypoint : MonoBehaviour
     // public ok here as is a data class
     public bool isExplored = false;
     public Waypoint exploredFrom;
+    public bool isPlaceable = true;
+    public bool hasTower = false;
+    [SerializeField] Tower towerPrefab;
 
     Vector2Int gridPos;
 
@@ -35,6 +39,32 @@ public class Waypoint : MonoBehaviour
 
     private void OnMouseOver()
     {
-        print("Over " + gameObject.name);
+        if(Input.GetMouseButtonDown(0))
+        {
+            CheckIfTowerCanBePlaced();
+        }
+    }
+
+    private void CheckIfTowerCanBePlaced()
+    {
+        if (isPlaceable && !hasTower)
+        {
+            PlaceTower();
+        }
+        else if(isPlaceable && hasTower)
+        {
+            RemoveTower();
+        }
+    }
+
+    private void RemoveTower()
+    {
+        
+    }
+
+    private void PlaceTower()
+    {
+        Instantiate(towerPrefab, transform.position, Quaternion.identity);
+        hasTower = true;
     }
 }
