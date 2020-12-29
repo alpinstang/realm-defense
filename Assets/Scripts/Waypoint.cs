@@ -1,25 +1,23 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Waypoint : MonoBehaviour
 {
-    [SerializeField] Color exploredColor = Color.black;
+    // public ok here as is a data class
     public bool isExplored = false;
     public Waypoint exploredFrom;
-    public bool debugMode = false;
 
     Vector2Int gridPos;
+
     const int gridSize = 10;
 
-    public void Update()
+    public int GetGridSize()
     {
-        if(debugMode)
-        {
-            SetTopColor(exploredColor);
-        }
+        return gridSize;
     }
+
+    // consider setting own color in Update()
 
     public Vector2Int GetGridPos()
     {
@@ -29,13 +27,9 @@ public class Waypoint : MonoBehaviour
         );
     }
 
-    public int GetGridSize()
-    {
-        return gridSize;
-    }
-
     public void SetTopColor(Color color)
     {
-        transform.Find("Top").GetComponent<MeshRenderer>().material.color = color;
+        MeshRenderer topMeshRenderer = transform.Find("Top").GetComponent<MeshRenderer>();
+        topMeshRenderer.material.color = color;
     }
 }
