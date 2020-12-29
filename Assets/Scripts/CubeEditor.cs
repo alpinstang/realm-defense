@@ -42,7 +42,10 @@ public class CubeEditor : MonoBehaviour
             waypoint.GetGridPos().x +
             "," +
             waypoint.GetGridPos().y;
-        textMesh.text = labelText;
+        if(textMesh != null)
+        {
+            textMesh.text = labelText;
+        }
         gameObject.name = labelText;
     }
 }

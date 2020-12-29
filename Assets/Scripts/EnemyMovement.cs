@@ -6,7 +6,6 @@ using UnityEngine;
 [SelectionBase]
 public class EnemyMovement : MonoBehaviour
 {
-
     // Use this for initialization
     void Start()
     {
@@ -21,7 +20,7 @@ public class EnemyMovement : MonoBehaviour
         foreach (Waypoint waypoint in path)
         {
             transform.position = new Vector3(waypoint.transform.position.x, 0f, waypoint.transform.position.z);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
         }
         print("Ending patrol");
     }
