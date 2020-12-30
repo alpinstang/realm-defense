@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 54660159372924652}
   - component: {fileID: 114941686308246830}
   - component: {fileID: 114078703179129330}
+  - component: {fileID: -17570684232170636}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1289942997295908}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -32.40259, y: -3.08, z: -42.168793}
+  m_LocalPosition: {x: -20, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4370127362219154}
@@ -62,6 +63,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bfb0ed787ecf3348a7ba1935d16c3e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementPeriod: 0.5
+  transitionTime: 1.75
+  GoalParticles: {fileID: 6217881504335611720, guid: 28b16a17777485849b739c6a10564313,
+    type: 3}
 --- !u!114 &114078703179129330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,6 +83,19 @@ MonoBehaviour:
   HitParticles: {fileID: 5929519791681589804}
   DeathParticles: {fileID: 198537984209914932, guid: 1a51bfda454239a41afb7dee687c6ac0,
     type: 3}
+--- !u!65 &-17570684232170636
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289942997295908}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1646541640735296
 GameObject:
   m_ObjectHideFlags: 0
