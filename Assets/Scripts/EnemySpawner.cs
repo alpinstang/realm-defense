@@ -2,17 +2,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] int totalEnemies = 5;
     [SerializeField] float secondsBetweenSpawns = 5f;
+    [SerializeField] Text scoreText;
     int enemyCount = 1; // we will always have at least one enemy spawning at start
 
     // Start is called before the first frame update
     void Start()
     {
+        scoreText.text = enemyCount.ToString();
         StartCoroutine(SpawnEnemies());
     }
 
@@ -24,6 +27,7 @@ public class EnemySpawner : MonoBehaviour
             var enemyList = GameObject.FindGameObjectWithTag("Enemy List");
             enemy.transform.SetParent(enemyList.transform);
             enemyCount++;
+            scoreText.text = enemyCount.ToString();
             yield return new WaitForSeconds(secondsBetweenSpawns);
         }
     }

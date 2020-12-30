@@ -1,0 +1,175 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8296637407544187864
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a79b01ea5641d4aa6daa2e23605641, type: 3}
+  m_Name: Bloom
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  intensity:
+    overrideState: 1
+    value: 1.5
+  threshold:
+    overrideState: 1
+    value: 0.7
+  softKnee:
+    overrideState: 0
+    value: 0
+  clamp:
+    overrideState: 0
+    value: 1
+  diffusion:
+    overrideState: 0
+    value: 1
+  anamorphicRatio:
+    overrideState: 0
+    value: -0.61
+  color:
+    overrideState: 0
+    value: {r: 0.6597539, g: 0, b: 0, a: 1}
+  fastMode:
+    overrideState: 0
+    value: 0
+  dirtTexture:
+    overrideState: 1
+    value: {fileID: 2800000, guid: eff6497f6dba0dd4184c5f75015f5afe, type: 3}
+    defaultState: 1
+  dirtIntensity:
+    overrideState: 1
+    value: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6292b2c06870d4495f009f912b9600, type: 3}
+  m_Name: Main Camera Profile
+  m_EditorClassIdentifier: 
+  settings:
+  - {fileID: -8296637407544187864}
+  - {fileID: 1970693742695384921}
+  - {fileID: 744753340624082433}
+  - {fileID: 5264729929866641961}
+--- !u!114 &744753340624082433
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f6f3f7c722b4544b97e3c75840aa33, type: 3}
+  m_Name: AutoExposure
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  filtering:
+    overrideState: 1
+    value: {x: 1, y: 99}
+  minLuminance:
+    overrideState: 1
+    value: -0.5
+  maxLuminance:
+    overrideState: 1
+    value: 4.41
+  keyValue:
+    overrideState: 1
+    value: 1.25
+  eyeAdaptation:
+    overrideState: 1
+    value: 0
+  speedUp:
+    overrideState: 1
+    value: 2
+  speedDown:
+    overrideState: 0
+    value: 1
+--- !u!114 &1970693742695384921
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40b924e2dad56384a8df2a1e111bb675, type: 3}
+  m_Name: Vignette
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  mode:
+    overrideState: 1
+    value: 0
+  color:
+    overrideState: 1
+    value: {r: 0, g: 0, b: 0, a: 1}
+  center:
+    overrideState: 1
+    value: {x: 0.5, y: 0.5}
+  intensity:
+    overrideState: 1
+    value: 0.25
+  smoothness:
+    overrideState: 1
+    value: 0.2
+  roundness:
+    overrideState: 1
+    value: 1
+  rounded:
+    overrideState: 1
+    value: 1
+  mask:
+    overrideState: 0
+    value: {fileID: 0}
+    defaultState: 1
+  opacity:
+    overrideState: 0
+    value: 1
+--- !u!114 &5264729929866641961
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 556797029e73b2347956b6579e77e05b, type: 3}
+  m_Name: DepthOfField
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  focusDistance:
+    overrideState: 1
+    value: 65
+  aperture:
+    overrideState: 1
+    value: 6.9
+  focalLength:
+    overrideState: 1
+    value: 300
+  kernelSize:
+    overrideState: 1
+    value: 1
