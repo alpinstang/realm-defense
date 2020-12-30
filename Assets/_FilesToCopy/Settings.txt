@@ -1,0 +1,1 @@
+{"show":true,"colorChangeCycle":3.5,"qualitySettings":2,"arrayExample":[3.0,4.0],"listExample":[2.0,0.0],"enumExample":1,"classExample":{"txt":"abcd"}}

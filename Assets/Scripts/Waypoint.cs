@@ -9,8 +9,7 @@ public class Waypoint : MonoBehaviour
     public bool isExplored = false;
     public Waypoint exploredFrom;
     public bool isPlaceable = true;
-    public bool hasTower = false;
-    [SerializeField] Tower towerPrefab;
+    TowerFactory towerFactory;
 
     Vector2Int gridPos;
 
@@ -41,32 +40,15 @@ public class Waypoint : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            CheckIfTowerCanBePlaced();
+            CheckIfPlaceable();
         }
     }
 
-    private void CheckIfTowerCanBePlaced()
+    private void CheckIfPlaceable()
     {
-        if (isPlaceable && !hasTower)
+        if(isPlaceable)
         {
-            PlaceTower();
+            FindObjectOfType<TowerFactory>().AddTower(this);
         }
-        else if(isPlaceable && hasTower)
-        {
-            RemoveTower();
-        }
-    }
-
-    private void RemoveTower()
-    {
-        // TODO: Remove tower system
-    }
-
-    private void PlaceTower()
-    {
-        var tower = Instantiate(towerPrefab, transform.position, Quaternion.identity);
-        var towerList = GameObject.FindGameObjectWithTag("Tower List");
-        tower.transform.SetParent(towerList.transform);
-        hasTower = true;
     }
 }
