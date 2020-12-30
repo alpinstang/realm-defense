@@ -8,6 +8,7 @@ public class EnemyDamage : MonoBehaviour
     [SerializeField] int hitPoints = 10;
     [SerializeField] ParticleSystem HitParticles;
     [SerializeField] ParticleSystem DeathParticles;
+    bool atGoal = false;
 
     private void OnParticleCollision(GameObject other)
     {
@@ -18,11 +19,13 @@ public class EnemyDamage : MonoBehaviour
         }
     }
 
-    private void KillEnemy()
+    public void KillEnemy()
     {
         var vfx = Instantiate(DeathParticles, transform.position, Quaternion.identity);
+        var enemyVfx = GameObject.FindGameObjectWithTag("VFX List");
+        vfx.transform.SetParent(enemyVfx.transform);
         vfx.Play();
-        Destroy(gameObject);
+        Destroy(gameObject, vfx.main.duration);
     }
 
     private void ProcessHit()

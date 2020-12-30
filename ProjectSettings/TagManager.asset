@@ -10,6 +10,7 @@ TagManager:
   - Tower
   - Tower List
   - Enemy List
+  - VFX List
   layers:
   - Default
   - TransparentFX
