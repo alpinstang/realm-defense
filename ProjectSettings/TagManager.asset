@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Neutral
+  - Friendly Block
+  - Enemy Block
+  - Tower
+  - Tower List
+  - Enemy List
   layers:
   - Default
   - TransparentFX

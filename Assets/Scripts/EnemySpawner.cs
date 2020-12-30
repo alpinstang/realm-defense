@@ -20,7 +20,9 @@ public class EnemySpawner : MonoBehaviour
     {
         while(enemyCount < totalEnemies)
         {
-            Instantiate<GameObject>(enemyPrefab, transform.position, Quaternion.identity);
+            var enemy = Instantiate<GameObject>(enemyPrefab, transform.position, Quaternion.identity);
+            var enemyList = GameObject.FindGameObjectWithTag("Enemy List");
+            enemy.transform.SetParent(enemyList.transform);
             enemyCount++;
             yield return new WaitForSeconds(secondsBetweenSpawns);
         }
