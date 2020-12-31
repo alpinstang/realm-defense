@@ -10,6 +10,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] int totalEnemies = 5;
     [SerializeField] float secondsBetweenSpawns = 5f;
     [SerializeField] Text scoreText;
+    [SerializeField] AudioClip audioClip;
+
     int enemyCount = 1; // we will always have at least one enemy spawning at start
 
     // Start is called before the first frame update
@@ -23,6 +25,7 @@ public class EnemySpawner : MonoBehaviour
     {
         while(enemyCount < totalEnemies)
         {
+            GetComponent<AudioSource>().PlayOneShot(audioClip, 0.6f);
             var enemy = Instantiate<GameObject>(enemyPrefab, transform.position, Quaternion.identity);
             var enemyList = GameObject.FindGameObjectWithTag("Enemy List");
             enemy.transform.SetParent(enemyList.transform);

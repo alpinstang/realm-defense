@@ -9,6 +9,8 @@ public class Camera : MonoBehaviour
 {
     public Button startButton;
 
+    public static object main { get; internal set; }
+
     void Start()
     {
         Button btn = startButton.GetComponent<Button>();

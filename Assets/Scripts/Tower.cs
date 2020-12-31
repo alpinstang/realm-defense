@@ -10,6 +10,7 @@ public class Tower : MonoBehaviour
     [SerializeField] float attackRange = 10f;
     [SerializeField] ParticleSystem projectileParticle;
     [SerializeField] public Waypoint baseWaypoint;
+    [SerializeField] AudioClip audioClip;
 
     // Update is called once per frame
     void Update()
@@ -64,6 +65,7 @@ public class Tower : MonoBehaviour
 
     private void Shoot(bool isActive)
     {
+        //GetComponent<AudioSource>().PlayOneShot(audioClip);
         var emissionModule = projectileParticle.emission;
         emissionModule.enabled = isActive;
     }

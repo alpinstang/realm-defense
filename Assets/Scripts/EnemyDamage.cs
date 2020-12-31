@@ -2,13 +2,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class EnemyDamage : MonoBehaviour
 {
+
+    [SerializeField] Collider collisionMesh;
     [SerializeField] int hitPoints = 10;
-    [SerializeField] ParticleSystem HitParticles;
-    [SerializeField] ParticleSystem DeathParticles;
+    [SerializeField] ParticleSystem hitParticlePrefab;
+    [SerializeField] ParticleSystem deathParticlePrefab;
+    [SerializeField] AudioClip enemyHitSFX;
+    [SerializeField] AudioClip enemyDeathSFX;
+    [SerializeField] GameObject mainCamera;
+
+    AudioSource myAudioSource;
+
+    private void Start()
+    {
+        myAudioSource = GetComponent<AudioSource>();
+    }
 
     private void OnParticleCollision(GameObject other)
     {
@@ -19,18 +30,22 @@ public class EnemyDamage : MonoBehaviour
         }
     }
 
-    public void KillEnemy()
+    void ProcessHit()
     {
-        var vfx = Instantiate(DeathParticles, transform.position, Quaternion.identity);
-        var enemyVfx = GameObject.FindGameObjectWithTag("VFX List");
-        vfx.transform.SetParent(enemyVfx.transform);
-        vfx.Play();
-        Destroy(gameObject, vfx.main.duration);
+        hitPoints = hitPoints - 1;
+        hitParticlePrefab.Play();
+        myAudioSource.PlayOneShot(enemyHitSFX);
     }
 
-    private void ProcessHit()
+    private void KillEnemy()
     {
-        hitPoints--;
-        HitParticles.Play();
+        // important to instantiate before destroying this object
+        var vfx = Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
+        vfx.Play();
+        Destroy(vfx.gameObject, vfx.main.duration);
+        var position = new Vector3(73, 75, -3);
+        AudioSource.PlayClipAtPoint(enemyDeathSFX, position);
+
+        Destroy(gameObject); // the enemy
     }
 }
