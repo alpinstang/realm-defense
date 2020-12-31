@@ -55,7 +55,9 @@ public class Tower : MonoBehaviour
         var distance = Vector3.Distance(targetEnemy.transform.position, gameObject.transform.position);
         if (distance <= attackRange)
         {
+            GetComponent<AudioSource>().Stop();
             Shoot(true);
+            GetComponent<AudioSource>().PlayOneShot(audioClip);
         }
         else
         {
@@ -65,7 +67,6 @@ public class Tower : MonoBehaviour
 
     private void Shoot(bool isActive)
     {
-        //GetComponent<AudioSource>().PlayOneShot(audioClip);
         var emissionModule = projectileParticle.emission;
         emissionModule.enabled = isActive;
     }

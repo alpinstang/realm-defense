@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bfb0ed787ecf3348a7ba1935d16c3e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementPeriod: 0.5
+  movementPeriod: 0.25
   transitionTime: 0.5
   GoalParticles: {fileID: 6217881504335611720, guid: 28b16a17777485849b739c6a10564313,
     type: 3}

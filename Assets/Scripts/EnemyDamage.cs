@@ -43,7 +43,7 @@ public class EnemyDamage : MonoBehaviour
         var vfx = Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
         vfx.Play();
         Destroy(vfx.gameObject, vfx.main.duration);
-        var position = new Vector3(73, 75, -3);
+        var position = new Vector3(87.87f, 73f, -4.5f);
         AudioSource.PlayClipAtPoint(enemyDeathSFX, position);
 
         Destroy(gameObject); // the enemy
