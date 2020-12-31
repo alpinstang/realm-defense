@@ -8,6 +8,7 @@ public class FriendlyBase : MonoBehaviour
 {
     public int baseHealth = 10;
     [SerializeField] Text healthText;
+    [SerializeField] AudioClip bombClip;
     
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,7 @@ public class FriendlyBase : MonoBehaviour
         if(other.gameObject.tag == "Enemy")
         {
             baseHealth--;
+            GetComponent<AudioSource>().PlayOneShot(bombClip, 1f);
             healthText.text = baseHealth.ToString();
         }
     }

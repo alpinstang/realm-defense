@@ -12,6 +12,7 @@ TagManager:
   - Enemy List
   - VFX List
   - Enemy
+  - Countown Panel
   layers:
   - Default
   - TransparentFX

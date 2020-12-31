@@ -7,6 +7,7 @@ public class TowerFactory : MonoBehaviour
 {
     [SerializeField] Tower towerPrefab;
     [SerializeField] int maxTowers = 5;
+    [SerializeField] AudioClip audioClip;
     Queue<Tower> towersQueue = new Queue<Tower>();
 
     Waypoint baseWaypoint;
@@ -24,6 +25,7 @@ public class TowerFactory : MonoBehaviour
 
     private void InstantiateNewTower(Waypoint baseWaypoint)
     {
+        GetComponent<AudioSource>().PlayOneShot(audioClip);
         var tower = Instantiate(towerPrefab, baseWaypoint.transform.position, Quaternion.identity);
         var towerList = GameObject.FindGameObjectWithTag("Tower List");
         tower.transform.SetParent(towerList.transform);

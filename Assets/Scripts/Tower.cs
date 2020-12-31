@@ -10,6 +10,7 @@ public class Tower : MonoBehaviour
     [SerializeField] float attackRange = 10f;
     [SerializeField] ParticleSystem projectileParticle;
     [SerializeField] public Waypoint baseWaypoint;
+    [SerializeField] AudioClip audioClip;
 
     // Update is called once per frame
     void Update()
@@ -54,7 +55,9 @@ public class Tower : MonoBehaviour
         var distance = Vector3.Distance(targetEnemy.transform.position, gameObject.transform.position);
         if (distance <= attackRange)
         {
+            GetComponent<AudioSource>().Stop();
             Shoot(true);
+            GetComponent<AudioSource>().PlayOneShot(audioClip);
         }
         else
         {
